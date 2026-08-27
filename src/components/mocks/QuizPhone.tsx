@@ -8,8 +8,8 @@ type QuizPhoneProps = {
 
 export function QuizPhone({
   variant = "choose",
-  correct = "meyve",
-  wrong = "meyva",
+  correct = "herhangi bir",
+  wrong = "sıra dışı",
 }: QuizPhoneProps) {
   const isStreak = variant === "streak";
   const isChallenge = variant === "challenge";
