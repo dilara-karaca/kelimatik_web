@@ -142,7 +142,7 @@ function WordChoice({
     <div
       className={`relative flex min-h-[78px] flex-1 items-center justify-center rounded-[22px] border ${styles} shadow-[0_8px_18px_-12px_rgba(41,45,54,0.2)]`}
     >
-      <p className={`px-1 text-center text-[20px] font-bold leading-tight ${textColor}`}>
+      <p className={`px-1.5 text-center text-[16px] font-bold leading-tight sm:text-[18px] ${textColor}`}>
         {text}
       </p>
       {state === "correct" && (

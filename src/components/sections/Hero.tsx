@@ -69,9 +69,9 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div className="relative mx-auto h-[520px] w-full max-w-[520px] sm:h-[560px]">
+        <div className="relative mx-auto h-[540px] w-full max-w-[560px] sm:h-[580px]">
           <motion.div
-            className="absolute top-8 left-0 z-0 origin-bottom -rotate-12"
+            className="absolute top-16 -left-4 z-0 origin-bottom -rotate-[14deg] sm:top-12 sm:left-0"
             initial={{ opacity: 0, x: -24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
@@ -86,7 +86,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
           <motion.div
-            className="absolute top-0 right-2 z-10 rotate-6 sm:right-6"
+            className="absolute top-0 right-0 z-10 rotate-6 sm:right-2"
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
