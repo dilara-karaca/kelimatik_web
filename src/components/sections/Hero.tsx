@@ -81,7 +81,7 @@ export function Hero() {
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
             >
               <PhoneFrame className="scale-[0.86] sm:scale-90">
-                <QuizPhone variant="choose" correct="herhangi bir" wrong="sıra dışı" />
+                <QuizPhone variant="choose" correct="sıra dışı" wrong="sıradışı" />
               </PhoneFrame>
             </motion.div>
           </motion.div>
@@ -96,7 +96,7 @@ export function Hero() {
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
             >
               <PhoneFrame>
-                <HomePhone wordOfDay="kütüphane" wordWrong="kütübhane" />
+                <HomePhone wordOfDay="herhangi bir" wordWrong="herhangibir" />
               </PhoneFrame>
             </motion.div>
           </motion.div>

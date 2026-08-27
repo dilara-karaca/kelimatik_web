@@ -41,8 +41,8 @@ type HomePhoneProps = {
 };
 
 export function HomePhone({
-  wordOfDay = "kütüphane",
-  wordWrong = "kütübhane",
+  wordOfDay = "herhangi bir",
+  wordWrong = "herhangibir",
 }: HomePhoneProps) {
   return (
     <div className="flex h-full flex-col bg-white pt-8 text-ink">
