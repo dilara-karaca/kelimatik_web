@@ -96,7 +96,7 @@ export function Hero() {
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
             >
               <PhoneFrame>
-                <HomePhone wordOfDay="yalnız" />
+                <HomePhone wordOfDay="kütüphane" wordWrong="kütübhane" />
               </PhoneFrame>
             </motion.div>
           </motion.div>

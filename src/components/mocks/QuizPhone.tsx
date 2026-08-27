@@ -1,7 +1,7 @@
 import { pub } from "../../lib/constants";
 
 type QuizPhoneProps = {
-  variant?: "choose" | "correct" | "streak";
+  variant?: "choose" | "correct" | "streak" | "challenge";
   correct?: string;
   wrong?: string;
 };
@@ -12,24 +12,36 @@ export function QuizPhone({
   wrong = "meyva",
 }: QuizPhoneProps) {
   const isStreak = variant === "streak";
+  const isChallenge = variant === "challenge";
   const isCorrect = variant === "correct";
+
+  const title = isStreak ? "Seri Modu" : isChallenge ? "Challenge" : "Klasik Mod";
+  const subtitle = "Hangisi doğru?";
+  const correctCount = isChallenge ? 4 : isCorrect || isStreak ? 7 : 4;
+  const wrongCount = isChallenge ? 1 : isStreak ? 0 : 1;
+  const progressLabel = isChallenge ? "5 / 544" : isCorrect || isStreak ? "8 / 13" : "5 / 13";
+  const progressPct = isChallenge ? 1 : isCorrect || isStreak ? 62 : 38;
+  const progressWidth = isChallenge ? "8%" : isCorrect || isStreak ? "62%" : "38%";
 
   return (
     <div className="flex h-full flex-col bg-white px-3.5 pt-8 pb-3 text-ink">
       <div className="mb-1 flex items-center">
         <span className="text-lg leading-none">‹</span>
         <div className="flex-1 text-center">
-          <p className="text-[15px] font-bold leading-tight">
-            {isStreak ? "Seri Modu" : "Klasik Mod"}
-          </p>
-          <p className="text-[10px] text-ink/55">
-            {isStreak ? "Seri: 8" : "Hangisi doğru?"}
-          </p>
+          <p className="text-[15px] font-bold leading-tight">{title}</p>
+          {isStreak ? (
+            <div className="mt-0.5 flex items-center justify-center gap-1">
+              <img src={pub("icons/streak-devam.png")} alt="" className="h-5 w-5" />
+              <span className="text-[13px] font-extrabold text-brand-deep">8</span>
+            </div>
+          ) : (
+            <p className="text-[10px] text-ink/55">{subtitle}</p>
+          )}
         </div>
         <img src={pub("icons/favorile.png")} alt="" className="h-4 w-4" />
       </div>
 
-      {!isStreak && (
+      {!isStreak && !isChallenge && (
         <div className="mb-2 flex justify-center gap-1">
           {Array.from({ length: 5 }).map((_, i) => (
             <img
@@ -42,24 +54,23 @@ export function QuizPhone({
         </div>
       )}
 
-      {isStreak && (
-        <div className="mb-2 flex items-center justify-center gap-1.5">
-          <img src={pub("icons/streak-devam.png")} alt="" className="h-6 w-6" />
-          <span className="text-sm font-extrabold text-brand-deep">8</span>
-        </div>
+      {isChallenge && (
+        <p className="mb-2 text-center text-[12px] font-extrabold text-brand-deep">
+          Kalan süre: 0:57
+        </p>
       )}
 
       <div className="mb-2.5 grid grid-cols-2 gap-1.5">
         <ScoreChip
           icon={pub("icons/dogru.png")}
           label="Doğru"
-          value={isCorrect || isStreak ? 7 : 4}
+          value={correctCount}
           tone="correct"
         />
         <ScoreChip
           icon={pub("icons/yanlis.png")}
           label="Yanlış"
-          value={isStreak ? 0 : 1}
+          value={wrongCount}
           tone="wrong"
         />
       </div>
@@ -76,16 +87,11 @@ export function QuizPhone({
 
       <div className="mt-auto rounded-2xl border border-[#e8e9eb] px-3 py-2.5">
         <div className="h-1.5 overflow-hidden rounded-full bg-brand/20">
-          <div
-            className="h-full rounded-full bg-brand"
-            style={{ width: isCorrect || isStreak ? "62%" : "38%" }}
-          />
+          <div className="h-full rounded-full bg-brand" style={{ width: progressWidth }} />
         </div>
         <div className="mt-1.5 flex justify-between text-[10px] font-bold">
-          <span>{isCorrect || isStreak ? "8 / 13" : "5 / 13"}</span>
-          <span className="text-brand-deep">
-            %{isCorrect || isStreak ? 62 : 38}
-          </span>
+          <span>{progressLabel}</span>
+          <span className="text-brand-deep">%{progressPct}</span>
         </div>
       </div>
     </div>
@@ -136,7 +142,9 @@ function WordChoice({
     <div
       className={`relative flex min-h-[78px] flex-1 items-center justify-center rounded-[22px] border ${styles} shadow-[0_8px_18px_-12px_rgba(41,45,54,0.2)]`}
     >
-      <p className={`px-1 text-center font-bold text-[20px] leading-tight ${textColor}`}>{text}</p>
+      <p className={`px-1 text-center text-[20px] font-bold leading-tight ${textColor}`}>
+        {text}
+      </p>
       {state === "correct" && (
         <img
           src={pub("icons/dogru.png")}

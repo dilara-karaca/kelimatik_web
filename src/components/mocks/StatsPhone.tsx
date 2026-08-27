@@ -1,74 +1,57 @@
 import { pub } from "../../lib/constants";
 
+const stats = [
+  {
+    icon: "icons/dogru.png",
+    label: "Doğru",
+    value: "248",
+    tone: "bg-correct-soft",
+  },
+  {
+    icon: "icons/yanlis.png",
+    label: "Yanlış",
+    value: "31",
+    tone: "bg-wrong-soft",
+  },
+  {
+    icon: "icons/saat_canli.png",
+    label: "Süre",
+    value: "08:42",
+    tone: "bg-mode-infinite",
+  },
+  {
+    icon: "icons/lig.png",
+    label: "Lig",
+    value: "Altın",
+    tone: "bg-mode-streak",
+  },
+  {
+    icon: "icons/streak-devam.png",
+    label: "Seri",
+    value: "12",
+    tone: "bg-peach",
+  },
+];
+
 export function StatsPhone() {
   return (
-    <div className="flex h-full flex-col bg-white px-3.5 pt-8 pb-3 text-ink">
-      <p className="mb-3 text-center text-[16px] font-bold">İlerlemen</p>
+    <div className="flex h-full flex-col bg-white px-3.5 pt-8 pb-4 text-ink">
+      <p className="mb-5 text-center text-[16px] font-bold">İlerlemen</p>
 
-      <div className="mb-3 flex items-center justify-between rounded-full bg-white px-3 py-2 shadow-[0_8px_18px_-10px_rgba(41,45,54,0.28)]">
-        <div className="flex items-center gap-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <img key={i} src={pub("icons/dolu_can.png")} alt="" className="h-4 w-4" />
-          ))}
-        </div>
-        <div className="flex items-center gap-1">
-          <img src={pub("icons/streak-devam.png")} alt="" className="h-4 w-4" />
-          <span className="text-xs font-extrabold">12</span>
-        </div>
+      <div className="flex flex-col gap-2.5">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className={`flex items-center gap-2.5 rounded-[18px] ${stat.tone} px-3.5 py-3`}
+          >
+            <img src={pub(stat.icon)} alt="" className="h-6 w-6 shrink-0" />
+            <p className="text-[12px] font-medium text-ink/55">{stat.label}</p>
+            <p className="ml-auto text-[16px] font-extrabold leading-none">
+              {stat.value}
+            </p>
+          </div>
+        ))}
       </div>
-
-      <div className="grid grid-cols-2 gap-2">
-        <StatTile
-          icon={pub("icons/dogru.png")}
-          label="Doğru"
-          value="248"
-          className="bg-correct-soft"
-        />
-        <StatTile
-          icon={pub("icons/yanlis.png")}
-          label="Yanlış"
-          value="31"
-          className="bg-wrong-soft"
-        />
-        <StatTile
-          icon={pub("icons/saat_canli.png")}
-          label="Süre"
-          value="08:42"
-          className="bg-mode-infinite"
-        />
-        <StatTile
-          icon={pub("icons/lig.png")}
-          label="Lig"
-          value="Altın"
-          className="bg-mode-streak"
-        />
-      </div>
-
-      <div className="mt-3 rounded-[22px] bg-peach p-3.5">
-        <p className="text-[11px] font-bold text-brand-deep">Son doğru</p>
-        <p className="mt-1 text-[18px] font-extrabold leading-none">doküman</p>
-        <p className="mt-1.5 text-[10px] text-ink/55">Serini koru, yıldız kazan.</p>
-      </div>
-    </div>
-  );
-}
-
-function StatTile({
-  icon,
-  label,
-  value,
-  className,
-}: {
-  icon: string;
-  label: string;
-  value: string;
-  className: string;
-}) {
-  return (
-    <div className={`rounded-2xl ${className} p-3`}>
-      <img src={icon} alt="" className="h-6 w-6" />
-      <p className="mt-2 text-[10px] font-semibold text-ink/55">{label}</p>
-      <p className="text-[16px] font-extrabold leading-tight">{value}</p>
     </div>
   );
 }

@@ -9,7 +9,7 @@ type PhoneFrameProps = {
 export function PhoneFrame({
   children,
   className = "",
-  widthClass = "w-full max-w-[220px] sm:max-w-[260px]",
+  widthClass = "w-[220px] max-w-full sm:w-[260px]",
 }: PhoneFrameProps) {
   return (
     <div className={`relative ${widthClass} ${className}`}>

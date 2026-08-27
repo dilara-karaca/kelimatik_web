@@ -1,20 +1,21 @@
 import { motion } from "framer-motion";
 import { PhoneFrame } from "../PhoneFrame";
 import { Reveal } from "../Reveal";
-import { HomePhone } from "../mocks/HomePhone";
 import { QuizPhone } from "../mocks/QuizPhone";
 import { StatsPhone } from "../mocks/StatsPhone";
 
 const steps = [
   {
-    title: "Bir kelimeyle başla.",
-    screen: <HomePhone wordOfDay="hiçbir" />,
-    rotate: -6,
-  },
-  {
     title: "Doğru yazımı seç.",
     screen: <QuizPhone variant="choose" correct="şoför" wrong="şöför" />,
-    rotate: 5,
+    rotate: 4,
+  },
+  {
+    title: "Zamana karşı yarış.",
+    screen: (
+      <QuizPhone variant="challenge" correct="öge" wrong="öğe" />
+    ),
+    rotate: -3,
   },
   {
     title: "Serini oluştur.",
@@ -24,7 +25,7 @@ const steps = [
   {
     title: "İlerlemeni takip et.",
     screen: <StatsPhone />,
-    rotate: 6,
+    rotate: 3,
   },
 ];
 
@@ -56,6 +57,7 @@ export function HowItWorks() {
               }}
             >
               <motion.div
+                className="w-full"
                 style={{ rotate: step.rotate }}
                 whileInView={{ y: [16, 0] }}
                 viewport={{ once: true }}
