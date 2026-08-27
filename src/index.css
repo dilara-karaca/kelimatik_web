@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #fc8b04;
+  --color-brand-deep: #f97316;
+  --color-ink: #292d36;
+  --color-mist: #f7f8fa;
+  --color-peach: #fff6eb;
+  --color-correct: #06c167;
+  --color-correct-soft: #e0fff0;
+  --color-wrong: #ff4d6d;
+  --color-wrong-soft: #fce0e6;
+  --color-mode-challenge: #d8f5eb;
+  --color-mode-mistakes: #fce0e6;
+  --color-mode-streak: #ffe8d3;
+  --color-mode-infinite: #dfedf5;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Fredoka", "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #fc8b04;
+  color: #ffffff;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.icon-white {
+  filter: brightness(0) invert(1);
+}
