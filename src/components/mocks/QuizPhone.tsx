@@ -2,9 +2,15 @@ import { pub } from "../../lib/constants";
 
 type QuizPhoneProps = {
   variant?: "choose" | "correct" | "streak";
+  correct?: string;
+  wrong?: string;
 };
 
-export function QuizPhone({ variant = "choose" }: QuizPhoneProps) {
+export function QuizPhone({
+  variant = "choose",
+  correct = "meyve",
+  wrong = "meyva",
+}: QuizPhoneProps) {
   const isStreak = variant === "streak";
   const isCorrect = variant === "correct";
 
@@ -59,12 +65,12 @@ export function QuizPhone({ variant = "choose" }: QuizPhoneProps) {
       </div>
 
       <WordChoice
-        text="herkez"
+        text={wrong}
         state={isCorrect ? "dimmed" : "idle"}
       />
       <div className="h-2.5" />
       <WordChoice
-        text="herkes"
+        text={correct}
         state={isCorrect ? "correct" : "idle"}
       />
 
@@ -130,7 +136,7 @@ function WordChoice({
     <div
       className={`relative flex min-h-[78px] flex-1 items-center justify-center rounded-[22px] border ${styles} shadow-[0_8px_18px_-12px_rgba(41,45,54,0.2)]`}
     >
-      <p className={`font-bold text-[22px] ${textColor}`}>{text}</p>
+      <p className={`px-1 text-center font-bold text-[20px] leading-tight ${textColor}`}>{text}</p>
       {state === "correct" && (
         <img
           src={pub("icons/dogru.png")}

@@ -81,7 +81,7 @@ export function Hero() {
               transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
             >
               <PhoneFrame className="scale-[0.86] sm:scale-90">
-                <HomePhone />
+                <QuizPhone variant="choose" correct="meyve" wrong="meyva" />
               </PhoneFrame>
             </motion.div>
           </motion.div>
@@ -96,23 +96,10 @@ export function Hero() {
               transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
             >
               <PhoneFrame>
-                <QuizPhone variant="choose" />
+                <HomePhone wordOfDay="yalnız" />
               </PhoneFrame>
             </motion.div>
           </motion.div>
-          <motion.img
-            src={pub("logo.png")}
-            alt="Kelimatik uygulama ikonu"
-            className="absolute bottom-8 left-8 z-20 h-20 w-20 rounded-[22px] shadow-xl sm:h-24 sm:w-24"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -8, 0], rotate: [0, -4, 0] }}
-            transition={{
-              opacity: { duration: 0.5, delay: 0.55 },
-              scale: { duration: 0.5, delay: 0.55 },
-              y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.9 },
-              rotate: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.9 },
-            }}
-          />
         </div>
       </div>
     </section>

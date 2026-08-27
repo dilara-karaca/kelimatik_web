@@ -45,9 +45,9 @@ export function StatsPhone() {
       </div>
 
       <div className="mt-3 rounded-[22px] bg-peach p-3.5">
-        <p className="text-[11px] font-bold text-brand-deep">Günlük seri</p>
-        <p className="mt-1 text-[22px] font-extrabold leading-none">12 gün</p>
-        <p className="mt-1 text-[10px] text-ink/55">Serini koru, yıldız kazan.</p>
+        <p className="text-[11px] font-bold text-brand-deep">Son doğru</p>
+        <p className="mt-1 text-[18px] font-extrabold leading-none">doküman</p>
+        <p className="mt-1.5 text-[10px] text-ink/55">Serini koru, yıldız kazan.</p>
       </div>
     </div>
   );

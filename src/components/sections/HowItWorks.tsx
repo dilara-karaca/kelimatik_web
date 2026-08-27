@@ -8,17 +8,17 @@ import { StatsPhone } from "../mocks/StatsPhone";
 const steps = [
   {
     title: "Bir kelimeyle başla.",
-    screen: <HomePhone />,
+    screen: <HomePhone wordOfDay="hiçbir" />,
     rotate: -6,
   },
   {
     title: "Doğru yazımı seç.",
-    screen: <QuizPhone variant="choose" />,
+    screen: <QuizPhone variant="choose" correct="şoför" wrong="şöför" />,
     rotate: 5,
   },
   {
     title: "Serini oluştur.",
-    screen: <QuizPhone variant="streak" />,
+    screen: <QuizPhone variant="streak" correct="bir şey" wrong="birşey" />,
     rotate: -4,
   },
   {
