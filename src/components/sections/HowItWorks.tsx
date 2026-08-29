@@ -7,19 +7,41 @@ import { StatsPhone } from "../mocks/StatsPhone";
 const steps = [
   {
     title: "Doğru yazımı seç.",
-    screen: <QuizPhone variant="choose" correct="şoför" wrong="şöför" />,
+    screen: (
+      <QuizPhone
+        variant="choose"
+        correct="şoför"
+        wrong="şöför"
+        correctCount={8}
+        wrongCount={5}
+      />
+    ),
     rotate: 4,
   },
   {
     title: "Zamana karşı yarış.",
     screen: (
-      <QuizPhone variant="challenge" correct="öge" wrong="öğe" />
+      <QuizPhone
+        variant="challenge"
+        correct="öge"
+        wrong="öğe"
+        correctCount={19}
+        wrongCount={3}
+      />
     ),
     rotate: -3,
   },
   {
     title: "Serini oluştur.",
-    screen: <QuizPhone variant="streak" correct="bir şey" wrong="birşey" />,
+    screen: (
+      <QuizPhone
+        variant="streak"
+        correct="bir şey"
+        wrong="birşey"
+        correctCount={16}
+        wrongCount={0}
+      />
+    ),
     rotate: -4,
   },
   {

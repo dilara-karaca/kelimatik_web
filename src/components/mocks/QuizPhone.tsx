@@ -1,15 +1,21 @@
 import { pub } from "../../lib/constants";
 
+const WORD_TOTAL = 600;
+
 type QuizPhoneProps = {
   variant?: "choose" | "correct" | "streak" | "challenge";
   correct?: string;
   wrong?: string;
+  correctCount?: number;
+  wrongCount?: number;
 };
 
 export function QuizPhone({
   variant = "choose",
   correct = "sıra dışı",
   wrong = "sıradışı",
+  correctCount = 11,
+  wrongCount = 4,
 }: QuizPhoneProps) {
   const isStreak = variant === "streak";
   const isChallenge = variant === "challenge";
@@ -17,11 +23,10 @@ export function QuizPhone({
 
   const title = isStreak ? "Seri Modu" : isChallenge ? "Challenge" : "Klasik Mod";
   const subtitle = "Hangisi doğru?";
-  const correctCount = isChallenge ? 4 : isCorrect || isStreak ? 7 : 4;
-  const wrongCount = isChallenge ? 1 : isStreak ? 0 : 1;
-  const progressLabel = isChallenge ? "5 / 544" : isCorrect || isStreak ? "8 / 13" : "5 / 13";
-  const progressPct = isChallenge ? 1 : isCorrect || isStreak ? 62 : 38;
-  const progressWidth = isChallenge ? "8%" : isCorrect || isStreak ? "62%" : "38%";
+  const answered = correctCount + wrongCount;
+  const progressPct = Math.round((answered / WORD_TOTAL) * 100);
+  const progressWidth = `${Math.max(progressPct, answered > 0 ? 2 : 0)}%`;
+  const progressLabel = `${answered} / ${WORD_TOTAL}`;
 
   return (
     <div className="flex h-full flex-col bg-white px-3.5 pt-8 pb-3 text-ink">
@@ -32,7 +37,9 @@ export function QuizPhone({
           {isStreak ? (
             <div className="mt-0.5 flex items-center justify-center gap-1">
               <img src={pub("icons/streak-devam.png")} alt="" className="h-5 w-5" />
-              <span className="text-[13px] font-extrabold text-brand-deep">8</span>
+              <span className="text-[13px] font-extrabold text-brand-deep">
+                {correctCount}
+              </span>
             </div>
           ) : (
             <p className="text-[10px] text-ink/55">{subtitle}</p>
